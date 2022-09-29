@@ -9,7 +9,7 @@ const validator = require('validator');
 const createBook = async function (req, res) {
 
      try {
-          let { title, excerpt, userId, ISBN, category, subcategory, releasedAt } = req.body;
+          let { title, bookCover, excerpt, userId, ISBN, category, subcategory, releasedAt } = req.body;
           // check body present or not
           if (Object.keys(req.body).length === 0) {
                return res.status(400).send({ status: false, message: "In req body data must be present" });
@@ -21,6 +21,7 @@ const createBook = async function (req, res) {
           if (! /^\w[A-Za-z0-9-?\s\-_,\.;:()]+$/.test(title)) {
                return res.status(400).send({ status: false, message: "title is not in valid format" });
           }
+          
           if (!excerpt) {
                return res.status(400).send({ status: false, message: "expert key is required field" });
           }

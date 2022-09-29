@@ -4,6 +4,7 @@ const bookController = require("../controller/bookController")
 const reviewController = require("../controller/reviewController")
 const userController = require("../controller/userController")
 const middleware =require("../middleware/auth.js")
+const aws =require('../Aws/aws.js');
 
 
 //========================= create And login User =============
@@ -23,11 +24,15 @@ router.post('/books/:bookId/review', reviewController.createReview)
 router.put('/books/:bookId/review/:reviewId', reviewController.updateReviewBookByBookid )
 router.delete('/books/:bookId/review/:reviewId',reviewController.deleteBookReview) 
 
+// ============================ AWS Api =====================
+
+router.post('/write-file-aws', aws.fistApi)
 
 // ================= Invalid Request Url ===============
 
 router.all('/**', function(req,res){
           return res.status(400).send({status: false , massage: "Invalid request"})
 })
+
 
 module.exports = router
