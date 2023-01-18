@@ -34,7 +34,7 @@ function App() {
       {para && <p> {text}</p> }
       </div>
       <div className='footer'>
-      Made with React by <span>Muhaz</span> 
+      Made with React by <span>Mohd Rizwan</span> 
     </div>
     </div>
     </div>
